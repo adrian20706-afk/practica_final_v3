@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repuestos de Coches</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="loader">
+    <div class="loader-circle"></div>
+    </div>
+
+    <div class="background"></div>
+    <!--<div class="contenido"></div>-->
+    <!-- ===== Header Nav profesional ===== -->
+    <header>
+        <h1>Repuestos de Coches</h1>
+        <nav>
+            <ul>
+                <li><a href="../html/index.html">Inicio</a></li>
+                <li><a href="../html/productos.html">Productos</a></li>
+                <li><a href="../html/productos.html">Modelos</a></li>
+                <li><a href="../html/contacto.html">Contacto</a></li>
+                <li><a href="../html/sobre.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero fade-in">
+
+        <section class="hero">
+            <h2 class="titulonoseve">Bienvenido a nuestra tienda de repuestos</h2>
+            <p class="pnoseve">Encuentra repuestos de calidad para tu coche de manera rápida y segura.</p>
+        </section>
+
+        <div class="sidebar-info">
+            <h3>📍 Nuestra Ubicación</h3>
+            <p>Calle Mecanicos 27<br>Madrid, España</p>
+
+            <h3>🕒 Horarios</h3>
+            <p>Lunes - Viernes: 8:00 - 20:00<br>
+            Sábados: 9:00 - 14:00<br>
+            Domingos: Cerrado</p>
+
+            <h3>📞 Teléfono</h3>
+            <p>+34 611 223 444</p>
+        </div>
+
+        <!-- Login profesional -->
+         <div class="login-container">
+        
+         <h2>Iniciar Sesión</h2>
+        <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Usuario" required><br>
+        <input type="password" name="password" placeholder="Contraseña" required><br>
+        <button type="submit">Entrar</button>
+        </form>
+
+        <h3>¿No tienes cuenta?</h3>
+        <a href="html/registro.html">Registrarse</a>
+    
+         </div>
+         <div class="location-box">
+         <h3>📍 Nuestra Ubicación</h3>
+            <p>Calle Mecánicos 27<br>Madrid, España</p>
+
+            <h3>🗺 Ver en el mapa</h3>
+            <a class="location-btn" href="https://maps.google.com/?q=Calle+Mecanicos+27+Madrid" target="_blank">
+                Abrir Google Maps
+            </a>
+        </div>
+        <!-- Productos destacados en la página principal -->
+        <section class="featured-products">
+            <div class="product-card reveal">
+
+            <h2>Productos Destacados</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="../img/proxy-image.jpeg" alt="Frenos">
+                    <h3>Frenos de Alta Calidad</h3> 
+                    <p class="price">€120</p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="../img/bujias.jpeg" alt="Bujías">
+                    <h3>Bujías Premium</h3>
+                    <p class="price">€35</p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="../img/luces.jpeg" alt="Luces">
+                    <h3>Luces LED</h3>
+                    <p class="price">€50</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="reviews-section">
+    <h2>⭐ Opiniones de nuestros clientes</h2>
+
+    <div id="reviews-container"></div>
+
+    <div class="reviews-nav">
+        <button id="prevReview">⬅ Anterior</button>
+        <button id="nextReview">Siguiente ➡</button>
+    </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Repuestos de Coches</p>
+    </footer>
+
+
+    <script>
+        // Login simulado
+        const usuarios = {
+            "admin": "1234",
+            "usuario": "abcd"
+        };
+
+        const loginForm = document.getElementById("loginForm");
+        const loginMessage = document.getElementById("loginMessage");
+
+        loginForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if(usuarios[username] && usuarios[username] === password){
+                loginMessage.style.color = "green";
+                loginMessage.textContent = `Bienvenido ${username}!`;
+            } else {
+                loginMessage.style.color = "red";
+                loginMessage.textContent = "Usuario o contraseña incorrecta.";
+            }
+        });
+    </script>
+    <script>
+// LOADER
+window.onload = function() {
+    document.body.classList.add("loaded");
+};
+
+// REVEAL SCROLL ANIMATION
+const revealElements = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(el => {
+        const position = el.getBoundingClientRect().top;
+        if (position < windowHeight - 100) {
+            el.classList.add("visible");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
+
+<script>
+const reviews = [
+    { name: "Pedro López", text: "Servicio rápido, profesional y económico. Muy recomendable." },
+    { name: "María Sanchez", text: "Me cambiaron el embrague el mismo día. Trato excelente." },
+    { name: "Luis Moreno", text: "Gran taller, precios razonables y personal muy amable." },
+    { name: "Sandra Torres", text: "Tenía un problema eléctrico y lo solucionaron rápido." },
+    { name: "Carlos Hidalgo", text: "El mejor taller al que he ido. Confianza total." }
+];
+
+let reviewIndex = 0;
+
+function loadReview() {
+    const container = document.getElementById("reviews-container");
+    container.innerHTML = `
+        <div class="review-card">
+            <h3>${reviews[reviewIndex].name}</h3>
+            <p>${reviews[reviewIndex].text}</p>
+        </div>
+    `;
+}
+
+document.getElementById("nextReview").onclick = () => {
+    reviewIndex = (reviewIndex + 1) % reviews.length;
+    loadReview();
+};
+
+document.getElementById("prevReview").onclick = () => {
+    reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+    loadReview();
+};
+
+// cargar primera reseña al entrar
+loadReview();
+</script>
+
+
+
+</body>
+</html>
+
