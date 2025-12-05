@@ -1,0 +1,53 @@
+/* Reset y tipografía */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background:#f2f6fc; color:#333; line-height:1.6; }
+
+/* Header/Nav */
+header { background: linear-gradient(90deg, #1f3b73, #3a5bbf); color:#fff; padding:20px 0; position:sticky; top:0; z-index:1000; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+header h1 { text-align:center; font-size:2rem; font-weight:700;}
+nav ul { list-style:none; display:flex; justify-content:center; gap:25px;}
+nav ul li a { color:#fff; text-decoration:none; padding:8px 16px; font-weight:600; border-radius:8px; transition:all 0.3s ease;}
+nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,0.2); transform:translateY(-2px); }
+
+/* Main */
+main { max-width:800px; margin:40px auto; padding:0 20px; }
+main h2 { text-align:center; color:#1f3b73; font-size:1.8rem; margin-bottom:20px; }
+
+/* Formulario */
+.contact-container { max-width:500px; margin:0 auto; background:#f4f8fc; padding:20px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
+.contact-container .form-group { margin-bottom:15px; }
+.contact-container label { display:block; margin-bottom:5px; font-weight:600; color:#333; }
+.contact-container input, .contact-container textarea { width:100%; padding:12px 15px; border-radius:10px; border:1px solid #ccc; }
+.contact-container input:focus, .contact-container textarea:focus { outline:none; border-color:#3a5bbf; box-shadow:0 0 8px rgba(58,91,191,0.3);}
+.contact-container button { width:100%; padding:12px 20px; background:#3a5bbf; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:600; transition: all 0.3s ease;}
+.contact-container button:hover { background:#1f3b73; transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.2); }
+#formMessage { margin-top:10px; font-weight:bold; }
+
+/* Información contacto */
+.contact-info { max-width:600px; margin:30px auto; background:#fff; padding:20px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:center; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background:linear-gradient(90deg, #1f3b73, #3a5bbf); color:#fff; }
+
+/* Animaciones */
+.fade-in { animation: fadeIn 1s ease-in-out; }
+.slide-up { animation: slideUp 1s ease-in-out; }
+.shake { animation: shake 0.5s; }
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(50px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes shake {
+  0% { transform:translateX(0); }
+  25% { transform:translateX(-5px); }
+  50% { transform:translateX(5px); }
+  75% { transform:translateX(-5px); }
+  100% { transform:translateX(0); }
+}
+
+/* Responsivo

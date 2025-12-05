@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Repuestos de Coches</title>
+    <link rel="stylesheet" href="../css/producto.css">
+</head>
+<body>
+    <!-- ===== Header con Nav profesional ===== -->
+    <header>
+        <h1>Repuestos de Coches</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="modelos.html">Modelos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="sobre.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Nuestros Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card">
+
+                <img src="../img/proxy-image.jpeg" alt="Frenos">
+                <h3>Frenos de Alta Calidad</h3>
+                <p class="price">€120</p>
+               <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+
+                <button>Comprar</button>
+            </div>
+            <div class="product-card">
+                <img src="../img/filtroaceite.jpeg" alt="Filtro de Aceite">
+                <h3>Filtro de Aceite</h3>
+                <p class="price">€25</p>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+                <button>Comprar</button>
+            </div>
+            <div class="product-card">
+                <img src="../img/bujias premium.jpeg" alt="Bujías">
+                <h3>Bujías Premium</h3>
+                <p class="price">€35</p>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+                <button>Comprar</button>
+            </div>
+
+
+            <div class="product-card">
+                <img src="../img/amortiguador roscado.jpeg" alt="Amortiguadores">
+                <h3>Amortiguadores</h3>
+                <p class="price">€150</p>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+                <button>Comprar</button>
+            </div>
+
+
+            <div class="product-card">
+                <img src="../img/luces.jpeg" alt="Luces">
+                <h3>Luces LED</h3>
+                <p class="price">€50</p>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+                <button>Comprar</button>
+            </div>
+
+
+
+            <div class="product-card">
+                <img src="../img/llantas.jpeg" alt="Llantas">
+                <h3>Llantas OZ</h3>
+                <p class="price">€399</p>
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+
+                <button>Comprar</button>
+            </div>
+        </div>
+    </main>
+
+
+<!-- ===== Modal de Producto ===== -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <img id="modal-img" src="" alt="">
+        <h3 id="modal-title"></h3>
+        <p id="modal-price"></p>
+        <p id="modal-description"></p>
+
+        <button class="modal-btn">Comprar</button>
+    </div>
+</div>
+
+
+<script>
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+
+        const img = card.querySelector("img").src;
+        const title = card.querySelector("h3").textContent;
+        const price = card.querySelector(".price").textContent;
+
+        document.getElementById("modal-img").src = img;
+        document.getElementById("modal-title").textContent = title;
+        document.getElementById("modal-price").textContent = price;
+        document.getElementById("modal-description").textContent =
+            "Descripción detallada del producto " + title;
+
+        document.getElementById("product-modal").style.display = "flex";
+    });
+});
+
+/* Cerrar modal */
+document.querySelector(".close").addEventListener("click", () => {
+    document.getElementById("product-modal").style.display = "none";
+});
+
+/* Cerrar al hacer clic afuera */
+window.onclick = function(e) {
+    const modal = document.getElementById("product-modal");
+    if (e.target === modal) modal.style.display = "none";
+}
+</script>
+
+
+
+
+
+
+
+<script>
+// Manejo de valoración por producto
+document.querySelectorAll('.rating').forEach(rating => {
+    const stars = rating.querySelectorAll('.star');
+
+    // Recuperar rating guardado si existiera
+    let saved = rating.getAttribute("data-rating");
+    if (saved > 0) {
+        stars.forEach(star => {
+            if (star.dataset.value <= saved) star.classList.add("active");
+        });
+    }
+
+    stars.forEach(star => {
+        // Hover visual
+        star.addEventListener("mouseover", () => {
+            stars.forEach(s => s.classList.remove("active"));
+            stars.forEach(s => {
+                if (s.dataset.value <= star.dataset.value) {
+                    s.style.color = "gold";
+                } else {
+                    s.style.color = "#ccc";
+                }
+            });
+        });
+
+        // Quitar hover cuando sale el mouse
+        rating.addEventListener("mouseleave", () => {
+            stars.forEach(s => {
+                s.style.color = s.classList.contains("active") ? "gold" : "#ccc";
+            });
+        });
+
+        // Guardar la valoración al hacer clic
+        star.addEventListener("click", () => {
+            rating.setAttribute("data-rating", star.dataset.value);
+            stars.forEach(s => s.classList.remove("active"));
+            stars.forEach(s => {
+                if (s.dataset.value <= star.dataset.value) {
+                    s.classList.add("active");
+                }
+            });
+        });
+    });
+});
+</script>
+
+
+    <footer>
+        <p>&copy; 2025 Repuestos de Coches</p>
+    </footer>
+</body>
+</html>
+
+

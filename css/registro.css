@@ -1,0 +1,121 @@
+
+/* ===== Reset y tipografía ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f2f6fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== Header / Nav ===== */
+header {
+    background: linear-gradient(90deg, #1f3b73, #3a5bbf);
+    color: #fff;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* ===== Hero ===== */
+.hero {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    color: #1f3b73;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+}
+/* ===== Login ===== */
+.login-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #f4f8fc;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #1f3b73;
+}
+
+.login-container input,
+.login-container button {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: #3a5bbf;
+    box-shadow: 0 0 8px rgba(58,91,191,0.3);
+}
+
+.login-container button {
+    background: #3a5bbf;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #1f3b73;
+    transform: translateY(-2px);
+}
+
+#loginMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+

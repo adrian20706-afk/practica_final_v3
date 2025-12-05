@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Repuestos de Coches</title>
+  <link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+  <header>
+    <h1>Repuestos de Coches</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="modelos.html">Modelos</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+        <li><a href="sobre.html">Sobre Nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Contáctanos</h2>
+    <div class="contact-container fade-in">
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" placeholder="Introduce tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="Introduce tu email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje</label>
+          <textarea id="message" placeholder="Escribe tu mensaje" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="formMessage"></p>
+    </div>
+
+    <div class="contact-info slide-up">
+      <h3>Información de Contacto</h3>
+      <p>📞 Teléfono: +34 123 456 789</p>
+      <p>📧 Email: info@repuestoscoches.com</p>
+      <p>📍 Dirección: Calle Ficticia 123, Madrid, España</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Repuestos de Coches</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (name.length < 3) {
+        formMessage.textContent = "⚠️ El nombre debe tener al menos 3 caracteres.";
+        formMessage.style.color = "red";
+        formMessage.classList.add("shake");
+        setTimeout(() => formMessage.classList.remove("shake"), 500);
+        return;
+      }
+
+      if (!email.includes("@")) {
+        formMessage.textContent = "⚠️ Introduce un correo electrónico válido.";
+        formMessage.style.color = "red";
+        formMessage.classList.add("shake");
+        setTimeout(() => formMessage.classList.remove("shake"), 500);
+        return;
+      }
+
+      if (message.length < 10) {
+        formMessage.textContent = "⚠️ El mensaje debe tener al menos 10 caracteres.";
+        formMessage.style.color = "red";
+        formMessage.classList.add("shake");
+        setTimeout(() => formMessage.classList.remove("shake"), 500);
+        return;
+      }
+
+      formMessage.textContent = "✅ Mensaje enviado correctamente. ¡Gracias por contactarnos!";
+      formMessage.style.color = "green";
+      formMessage.classList.add("fade-in");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+

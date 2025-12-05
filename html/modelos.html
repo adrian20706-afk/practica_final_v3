@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos - Repuestos de Coches</title>
+    <link rel="stylesheet" href="../css/modelos.css">
+</head>
+<body>
+    <!-- Header Nav -->
+    <header>
+        <h1>Repuestos de Coches</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="modelos.html">Modelos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="sobre.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Buscar repuestos por modelo</h2>
+        <div class="search-model">
+            <input type="text" id="modelo" placeholder="Ingresa el modelo de tu coche">
+            <button onclick="buscarRepuestos()">Buscar</button>
+        </div>
+
+        <div id="resultado"></div>
+    </main>
+
+
+
+    <script>
+        const repuestos = {
+            "Toyota Corolla": ["Frenos", "Filtros de aceite", "Bujías"],
+            "Honda Civic": ["Amortiguadores", "Luces delanteras", "Bujías"],
+            "Ford Fiesta": ["Frenos", "Filtro de aire", "Luces traseras"],
+            "BMW Serie 3": ["Amortiguadores", "Frenos", "Bujías"],
+            "Volkswagen Golf": ["Filtros de aceite", "Frenos", "Luces"]
+        };
+
+        function buscarRepuestos() {
+            const modelo = document.getElementById("modelo").value.trim();
+            const resultado = document.getElementById("resultado");
+
+            if(repuestos[modelo]) {
+                resultado.innerHTML = `<h3>Repuestos para ${modelo}:</h3><ul>${repuestos[modelo].map(p => `<li>${p}</li>`).join('')}</ul>`;
+            } else {
+                resultado.innerHTML = "<p>No se encontraron repuestos para este modelo.</p>";
+            }
+        }
+    </script>
+
+
+
+<style>
+  :root{
+    --primary:#3a5bbf; --dark:#1f3b73; --bg:#f2f6fc;
+    --card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+  body{background:var(--bg);color:#1f2b46;line-height:1.4;}
+  header{background:linear-gradient(90deg,var(--dark),var(--primary));color:#fff;padding:18px 12px;text-align:center;box-shadow:0 6px 18px rgba(25,41,85,0.12)}
+  header h1{font-size:1.25rem}
+  main{max-width:1200px;margin:28px auto;padding:0 18px}
+  .intro{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:18px}
+  .intro p{max-width:66%}
+  .search{display:flex;gap:8px;align-items:center}
+  .search input{padding:10px 12px;border-radius:10px;border:1px solid #cbd6f0;background:#fff;min-width:220px}
+  .search button{padding:10px 14px;border-radius:10px;background:var(--primary);color:#fff;border:none;cursor:pointer}
+  /* Grid de marcas */
+  .brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px}
+  .brand{
+    background:var(--card);
+    border-radius:12px;
+    padding:14px;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(30,50,120,0.06);
+    cursor:pointer;user-select:none;transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .brand:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(30,50,120,0.09)}
+  .brand img{width:72px;height:48px;object-fit:contain;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto}
+  .brand .name{font-weight:700;font-size:0.9rem;color:#123;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* Panel de modelos */
+  .models-panel{position:fixed;right:0;top:0;height:100vh;width:0;background:#fff;box-shadow:-18px 0 40px rgba(20,30,70,0.12);overflow:auto;transition:width .28s ease;padding:20px}
+  .models-panel.open{width:420px;min-width:320px}
+  .panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .panel-header h2{font-size:1.1rem}
+  .close-btn{background:#f3f6ff;border:1px solid #e2e8ff;padding:8px 10px;border-radius:10px;cursor:pointer}
+  .models-list{display:grid;gap:12px;margin-top:14px}
+  .model-card{display:flex;gap:12px;align-items:center;background:#fbfdff;padding:10px;border-radius:10px;border:1px solid #f0f4ff}
+  .model-card img{width:110px;height:70px;object-fit:cover;border-radius:6px}
+  .model-info{flex:1}
+  .model-info h3{font-size:0.95rem;margin-bottom:6px}
+  .model-info p{font-size:0.85rem;color:#556}
+  .btn-small{padding:8px 10px;border-radius:8px;border:none;background:var(--primary);color:#fff;cursor:pointer}
+  /* Reparable: mostrar más */
+  .more{margin-top:12px;text-align:center}
+  .hint{font-size:0.85rem;color:#556;margin-top:8px}
+  /* Responsive: panel a full */
+  @media(max-width:720px){
+    .models-panel.open{width:100%;min-width:100%}
+    main{padding:0 12px}
+  }
+</style>
+</head>
+<body>
+<header>
+    <h1>Escoge la marca — ver modelos</h1>
+</header>
+
+<main>
+    <div class="intro">
+        <p>Haz clic en la marca para ver al menos 5 modelos.</p>
+
+        <div class="search">
+            <input id="searchInput" placeholder="Filtrar marcas (ej: toyota, ford...)" />
+            <button id="clearBtn">Limpiar</button>
+        </div>
+    </div>
+
+    <div id="brands" class="brands-grid" aria-live="polite"></div>
+</main>
+
+<aside id="panel" class="models-panel" aria-hidden="true">
+    <div class="panel-header">
+        <h2 id="panelTitle">Marca</h2>
+        <button id="closePanel" class="close-btn">Cerrar</button>
+    </div>
+
+    <div id="modelsContainer" class="models-list"></div>
+
+    <div class="more">
+        <button id="showAllModels" class="btn-small">Mostrar más modelos</button>
+    </div>
+</aside>
+
+<script>
+/* === LISTA DE MARCAS Y MODELOS === */
+const brandsData = [
+  { key:"Toyota", icon:"./logos/toyota.png", models:["Corolla","Camry","RAV4","Yaris","Prius"] },
+  { key:"Honda", icon:"./logos/honda.png", models:["Civic","Accord","CR-V","HR-V","Fit"] },
+  { key:"Ford", icon:"./logos/ford.png", models:["Fiesta","Focus","Mondeo","Kuga","Mustang"] },
+  { key:"Chevrolet", icon:"./logos/chevrolet.png", models:["Spark","Cruze","Malibu","Equinox","Camaro"] },
+  { key:"Nissan", icon:"./logos/nissan.png", models:["Micra","Leaf","Qashqai","Juke","Altima"] },
+  { key:"Hyundai", icon:"./logos/hyundai.png", models:["i10","i20","i30","Tucson","Kona"] },
+  { key:"Kia", icon:"./logos/kia.png", models:["Rio","Ceed","Sportage","Stonic","Sorento"] },
+  { key:"Volkswagen", icon:"./logos/volkswagen.png", models:["Golf","Polo","Passat","T-Roc","Tiguan"] },
+  { key:"BMW", icon:"./logos/bmw.png", models:["Serie 1","Serie 3","Serie 5","X3","X5"] },
+  { key:"Mercedes-Benz", icon:"./logos/mercedes.png", models:["A-Class","C-Class","E-Class","GLA","GLE"] },
+  { key:"Audi", icon:"./logos/audi.png", models:["A1","A3","A4","Q3","Q5"] },
+  { key:"Peugeot", icon:"./logos/peugeot.png", models:["208","308","3008","5008","2008"] },
+  { key:"Renault", icon:"./logos/renault.png", models:["Clio","Megane","Captur","Scenic","Talisman"] },
+  { key:"Citroën", icon:"./logos/citroen.png", models:["C1","C3","C4","C5 Aircross","Berlingo"] },
+  { key:"Opel", icon:"./logos/opel.png", models:["Corsa","Astra","Mokka","Crossland","Insignia"] },
+  { key:"Seat", icon:"./logos/seat.png", models:["Ibiza","Leon","Ateca","Arona","Toledo"] },
+  { key:"Skoda", icon:"./logos/skoda.png", models:["Fabia","Octavia","Superb","Kamiq","Kodiaq"] },
+  { key:"Volvo", icon:"./logos/volvo.png", models:["S60","S90","XC40","XC60","XC90"] },
+  { key:"Mazda", icon:"./logos/mazda.png", models:["Mazda 2","Mazda 3","CX-3","CX-5","MX-5"] },
+  { key:"Subaru", icon:"./logos/subaru.png", models:["Impreza","Forester","Outback","XV","BRZ"] },
+  { key:"Mitsubishi", icon:"./logos/mitsubishi.png", models:["ASX","Outlander","Lancer","Eclipse Cross","Mirage"] },
+  { key:"Jeep", icon:"./logos/jeep.png", models:["Wrangler","Compass","Cherokee","Renegade","Gladiator"] },
+  { key:"Land Rover", icon:"./logos/landrover.png", models:["Defender","Discovery","Range Rover","Evoque","Velar"] },
+  { key:"Jaguar", icon:"./logos/jaguar.png", models:["XE","XF","F-Pace","E-Pace","I-Pace"] },
+  { key:"Porsche", icon:"./logos/porsche.png", models:["911","Taycan","Cayenne","Macan","Panamera"] },
+  { key:"Ferrari", icon:"./logos/ferrari.png", models:["488","F8","Roma","Portofino","SF90"] },
+  { key:"Lamborghini", icon:"./logos/lamborghini.png", models:["Huracán","Aventador","Urus","Gallardo","Revuelto"] },
+  { key:"Tesla", icon:"./logos/tesla.png", models:["Model S","Model 3","Model X","Model Y","Cybertruck"] },
+  { key:"Alfa Romeo", icon:"./logos/alfaromeo.png", models:["Giulia","Stelvio","Tonale","Giulietta","4C"] }
+];
+
+
+
+
+const brandsContainer = document.getElementById("brands");
+const panel = document.getElementById("panel");
+const panelTitle = document.getElementById("panelTitle");
+const modelsContainer = document.getElementById("modelsContainer");
+const closePanel = document.getElementById("closePanel");
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+const showAllModelsBtn = document.getElementById("showAllModels");
+
+/* === Renderizar marcas === */
+function renderBrands(list){
+    brandsContainer.innerHTML = '';
+    list.forEach(b=>{
+        const el = document.createElement("button");
+        el.className = "brand";
+        el.textContent = b.key;
+        el.addEventListener("click",()=>openPanel(b));
+        brandsContainer.appendChild(el);
+    });
+}
+
+/* === Abrir panel lateral === */
+function openPanel(brand){
+    panelTitle.textContent = brand.key;
+    modelsContainer.innerHTML = "";
+
+    brand.models.slice(0,5).forEach(model=>{
+        const div = document.createElement("div");
+        div.className = "model-card";
+        div.innerHTML = `<strong>${model}</strong><br><span>Modelo de ejemplo</span>`;
+        modelsContainer.appendChild(div);
+    });
+
+    if(brand.models.length <= 5){
+        showAllModelsBtn.style.display = "none";
+    } else {
+        showAllModelsBtn.style.display = "block";
+        showAllModelsBtn.onclick = ()=>showAllModels(brand);
+    }
+
+    panel.classList.add("open");
+}
+
+/* Mostrar todos */
+function showAllModels(brand){
+    modelsContainer.innerHTML = "";
+    brand.models.forEach(model=>{
+        const div = document.createElement("div");
+        div.className = "model-card";
+        div.innerHTML = `<strong>${model}</strong><br><span>Datos ampliables aquí.</span>`;
+        modelsContainer.appendChild(div);
+    });
+    showAllModelsBtn.style.display = "none";
+}
+
+/* Cerrar panel */
+closePanel.addEventListener("click", ()=>{
+    panel.classList.remove("open");
+});
+
+/* Buscar marcas */
+searchInput.addEventListener("input",()=>{
+    const q = searchInput.value.toLowerCase();
+    const filtered = brandsData.filter(b=>b.key.toLowerCase().includes(q));
+    renderBrands(filtered);
+});
+
+/* Limpiar */
+clearBtn.addEventListener("click",()=>{
+    searchInput.value = "";
+    renderBrands(brandsData);
+});
+
+/* Cargar inicio */
+renderBrands(brandsData);
+</script>
+
+
+    <footer>
+        <p>&copy; 2025 Repuestos de Coches</p>
+    </footer>
+</body>
+</html>
